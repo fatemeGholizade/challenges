@@ -6,10 +6,10 @@
 
 ## تکنولوژی های مورد نیاز:
 
-1- React-Hook-Form / Formik
-2- یک State Management (Zustand, Recoil, Redux Or Context API)
-3- یک Ui Kit (Mantine, MUI Or Ant Design) استفاده از Mantine مزییت محسوب میشه
-4- Form Validator(Zod OR Yup)
+1. React-Hook-Form / Formik
+2. یک State Management (Zustand, Recoil, Redux Or Context API)
+3. یک Ui Kit (Mantine, MUI Or Ant Design) استفاده از Mantine مزییت محسوب میشه
+4. Form Validator(Zod OR Yup)
 
 ## وظایف
 
