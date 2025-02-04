@@ -5,4 +5,6 @@ export const todoSchema = yup.object().shape({
     .string()
     .matches(persianRegex, "عنوان باید فارسی باشد.")
     .required("عنوان ضروری است."),
+  priority: yup.string().required("لطفاً یک اولویت را انتخاب کنید."),
+
 });
