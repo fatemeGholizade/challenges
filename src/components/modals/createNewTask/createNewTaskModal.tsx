@@ -53,7 +53,7 @@ export const CreateNewTaskModal: React.FC<IAddNewTaskProps> = ({
   return (
     <Dialog
       open={isOpen}
-      onClose={onClose}
+      onClose={handleClose}
       PaperProps={{
         sx: {
           width: "80%",
