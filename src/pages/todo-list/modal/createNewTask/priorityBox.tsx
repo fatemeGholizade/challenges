@@ -5,7 +5,7 @@ interface IPriorityBoxProps {
   value: string;
   onChange: (priority: string) => void;
 };
-
+// this component renders rectangle of priorities colors
 const PriorityBox: React.FC<IPriorityBoxProps> = ({ value, onChange }) => {
   return (
     <Box sx={{ display: "flex", gap: 2, justifyContent: "center", marginBottom: 2 }}>

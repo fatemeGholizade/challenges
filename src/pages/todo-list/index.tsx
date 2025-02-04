@@ -1,17 +1,30 @@
-import { useTodoStore } from "@/store/toDoListStore";
+import { ITodo, useTodoStore } from "@/store/toDoListStore";
 import { Container, Paper, Typography, List, ListItem, ListItemText, IconButton, Checkbox, Box, Tooltip } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { useState } from "react";
-import { CreateNewTaskModal } from "@/components/modals/createNewTask/createNewTaskModal";
+import { CreateNewTaskModal } from "@/pages/todo-list/modal/createNewTask/createNewTaskModal";
 import palette from "@/theme/palette";
+import { enqueueSnackbar } from "notistack";
 const TodoPage: React.FC = () => {
-  const { todos, deleteListItem, toggleCompleteStatus } = useTodoStore();
-  const [openCreateTaskModal, setOpenCreateTaskModal] = useState<boolean>(false);
-  const completedTasks = todos.filter((todo) => todo.completed).length;
-  const ratioText = todos.length > 0 ? `${todos.length} / ${completedTasks} ` : "";
 
+  const { tasks, deleteListItem, toggleCompleteStatus } = useTodoStore();
+  const [openCreateTaskModal, setOpenCreateTaskModal] = useState<boolean>(false);
+
+  // this is for calculating the ratio of done tasks to all 
+  const completedTasks = tasks.filter((todo) => todo.completed).length;
+  const ratioText = tasks.length > 0 ? `${tasks.length} / ${completedTasks} ` : "";
+
+  const handleDeleteTask = (task:ITodo) => {
+    deleteListItem(task.id);
+    enqueueSnackbar("عملیات با موفقیت انجام شد.", { variant: "success" });
+  };
+
+  const handleToggleTaskStatue = (task:ITodo) => {
+    toggleCompleteStatus(task.id);
+    enqueueSnackbar("عملیات با موفقیت انجام شد.", { variant: "success" });
+  };
   return (
     <Container >
       <Paper>
@@ -20,7 +33,7 @@ const TodoPage: React.FC = () => {
           <Typography fontWeight="bold" variant="h5" align="center" color="#747474">
             لیست کارهای من
           </Typography>
-          {todos.length  > 0 && completedTasks < todos.length ?
+          {tasks.length === 0 ? "" : tasks.length  > 0 && completedTasks < tasks.length ?
           <Typography component="span" variant="h6" sx={{ marginLeft: "8px", color: "#4CAF50" }}>
               ({ratioText})
             </Typography>
@@ -35,34 +48,34 @@ const TodoPage: React.FC = () => {
           </Tooltip>
         </Box>
 
-        {todos.length > 0 ? (
+        {tasks.length > 0 ? (
           <List sx={{maxHeight:"350px", overflowY:"scroll", padding:"10px"}}>
-            {todos.map((todo) => (
+            {tasks.map((task) => (
               <ListItem
-                key={todo.id}
+                key={task.id}
                 sx={{
-                  backgroundColor: todo.priority || "white",
+                  backgroundColor: task.priority || "white",
                   borderRadius: "8px",
                   margin: "5px 0",
                   padding: "10px",
                 }}
               >
                 <ListItemText
-                  primary={todo.title}
+                  primary={task.title}
                   sx={{
-                      textDecoration: todo.completed ? "line-through" : "none",
-                      color: todo.completed ? "#6B7280" : palette.natural?.dark,
+                      textDecoration: task.completed ? "line-through" : "none",
+                      color: task.completed ? "#6B7280" : palette.natural?.dark,
                   }}
                 />
                 <Box>
-                  <IconButton edge="end" color="error" onClick={() => deleteListItem(todo.id)}>
+                  <IconButton edge="end" color="error" onClick={() => handleDeleteTask(task)}>
                     <Tooltip title="حذف">
                     <DeleteOutlineIcon />
                     </Tooltip>
                   </IconButton>
                   <Tooltip title="انجام ‌داده‌شده">
 
-                  <Checkbox checked={todo.completed} onChange={() => toggleCompleteStatus(todo.id)} color="success" />
+                  <Checkbox checked={task.completed} onChange={() =>  handleToggleTaskStatue(task)} color="success" />
                     </Tooltip>
                 </Box>
               </ListItem>
