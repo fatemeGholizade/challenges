@@ -53,6 +53,8 @@ const TodoPage: React.FC = () => {
             <Typography fontWeight="bold" variant="h5" align="center" color="#747474">
               لیست کارهای من
             </Typography>
+            
+            {/* conditions to show ratio of done tasks, medal icon or nothing */}
             {tasks.length === 0 ? (
               ""
             ) : tasks.length > 0 && completedTasks < tasks.length ? (

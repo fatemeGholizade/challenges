@@ -1,21 +1,19 @@
 import Button, { ButtonProps } from "@mui/material/Button";
+// this is a custom button that gets help from MUI button and others styles are declared in
+// MUI theme
 interface ICustomButtonProps extends ButtonProps {
   width?: string;
   loading?: boolean;
-  // shading?: "dark" | "light";
   onClick?: () => void;
   text: string;
-  // target?: "_blank" | "_self" | "_parent" | "_top";
 }
 
 const ContainedButton: React.FC<ICustomButtonProps> = ({
   className,
   size = "medium",
-  // shading = "dark",
   loading = false,
   disabled = false,
   onClick,
-  // target,
   text,
   ...rest
 }) => {
