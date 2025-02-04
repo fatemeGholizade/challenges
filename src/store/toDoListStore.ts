@@ -1,25 +1,29 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
-interface ITodo {
+import { persist } from "zustand/middleware";  
+  interface ITodo {
     id: number;
     title: string;
+    priority: string;
     completed: boolean;
-  };
+  }
   
   interface ITodoStore {
     todos: ITodo[];
-    addListItem: (title: string) => void;
+    addListItem: (title: string, priority: string) => void;
     deleteListItem: (id: number) => void;
     toggleCompleteStatus: (id: number) => void;
-  };
+  }
   
   export const useTodoStore = create<ITodoStore>()(
     persist(
       (set) => ({
         todos: [],
-        addListItem: (title) =>
+        addListItem: (title, priority) =>
           set((state) => ({
-            todos: [...state.todos, { id: Date.now(), title, completed: false }],
+            todos: [
+              { id: Date.now(), title, priority, completed: false },
+              ...state.todos,
+            ],
           })),
         deleteListItem: (id) =>
           set((state) => ({
@@ -40,4 +44,5 @@ interface ITodo {
       }
     )
   );
+  
   

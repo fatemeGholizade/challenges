@@ -11,11 +11,11 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         sizeSmall: {
-          height: "40px",
+          height: "30px",
           padding: "8px 16px",
         },
         sizeMedium: {
-          height: "48px",
+          height: "38px",
           padding: "8px 16px",
         },
         sizeLarge: {
@@ -23,38 +23,20 @@ const theme = createTheme({
           padding: "8px 16px",
         },
         root: {
-          borderRadius: "24px",
+          borderRadius: "8px",
           fontWeight: "500px",
           fontSize: "16px",
         },
         contained: {
-          backgroundColor: palette.primary?.light,
+          backgroundColor: palette.purple?.light,
           color: palette.natural?.main,
           boxShadow: "none !important",
           border: "1px solid transparent",
           "&:hover": {
-            backgroundColor: `${palette.primary?.main} `,
+            backgroundColor: `${palette.purple?.light} `,
           },
           "&.Mui-disabled": {
             background: `${palette.natural?.main} !important`,
-            color: `${palette.natural?.main} !important`,
-          },
-        },
-        text: {
-          "&:hover": {
-            backgroundColor: `${palette.primary?.light} `,
-          },
-          "&.Mui-disabled": {
-            border: `1px solid ${palette.natural?.main} !important`,
-            color: `${palette.natural?.main} !important`,
-          },
-        },
-        outlined: {
-          backgroundColor: "transparent",
-          color: palette.primary?.main,
-          border: `1px solid ${palette.primary?.light}`,
-          "&.Mui-disabled": {
-            border: `1px solid ${palette.natural?.main} !important`,
             color: `${palette.natural?.main} !important`,
           },
         },
@@ -64,6 +46,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           marginLeft: 0,
+          textAlign: "center",
+
         },
       },
     },
@@ -74,10 +58,11 @@ const theme = createTheme({
         },
         input: {
           fontSize: "0.95rem",
-          padding: "12px",
+          padding: "10px",
+          
         },
         notchedOutline: {
-          border: `1px solid ${palette.natural?.main} !important`,
+          border: `1px solid ${palette.purple?.light} !important`,
         },
       },
     },
@@ -86,11 +71,13 @@ const theme = createTheme({
         root: {
           transform: "translate(14px, 11px) scale(1)",
           fontSize: "0.85rem !important",
+          color: `${palette.purple?.light} !important`,
+
         },
         shrink: {
           transform: "translate(10px, -9px) scale(0.82)",
           fontSize: "0.90rem !important",
-          color: `${palette.natural?.main} !important`,
+          color: `${palette.purple?.main} !important`,
         },
       },
     },
@@ -111,9 +98,9 @@ const theme = createTheme({
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          color: palette.primary?.main,
+          color: palette.purple?.main,
           "&.Mui-checked": {
-            color: palette.secondary?.main,
+            color: palette.purple?.light,
           },
         },
       },

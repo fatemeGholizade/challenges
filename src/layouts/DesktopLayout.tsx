@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Box, Container } from "@mui/material";
+import Navbar from "@/components/Navbar";
 
 interface IDesktopLayoutProps {
   children: ReactNode;
@@ -8,13 +9,14 @@ interface IDesktopLayoutProps {
 const DesktopLayout: FC<IDesktopLayoutProps> = ({ children }) => {
   return (
     <Box display="flex" flexDirection="column" height="100vh">
-      <Box component="main" display="flex" flex="1" justifyContent="space-between" bgcolor="background.default">
+              <Navbar />
+      <Box component="main" display="flex" flex="1" justifyContent="space-between" >
         <Container
           maxWidth={false}
           sx={{
             width: "100%",
             overflowX: "hidden",
-            p: 4, 
+            paddingTop:4
           }}
         >
           {children}
