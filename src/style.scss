@@ -1,0 +1,19 @@
+@import "./assets/scss/base/base";
+@import "./assets/scss/base/typography";
+@import "./assets/scss/base/pageLayout";
+@import "./assets/scss/components/flashing_loading";
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cdced7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c4c3c9;
+}
