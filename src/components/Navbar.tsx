@@ -1,5 +1,6 @@
 import { AppBar, Box, Toolbar } from "@mui/material";
 const Navbar = () => {
+  // very simple header components
   return (
     <>
       <Box height={64} />
