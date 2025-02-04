@@ -1,3 +1,18 @@
+## عکس از موارد پیاده‌سازی شده:
+
+
+۱. در نظر گرفتن حالت responsive:
+![Screenshot from 2025-02-04 19-19-59](https://github.com/user-attachments/assets/e8ae3d71-1f24-4648-b1a9-1f4a0d037c28)
+
+۲. نشان‌دادن متن خظاها (تمامی حروف فارسی +‌ نیم‌اسپیس و کاراکترهای خاص درست در نظر گرفته شده‌اند):
+![Screenshot from 2025-02-04 19-20-14](https://github.com/user-attachments/assets/84f3b424-2f70-4956-b1ca-89196b0cb64b)
+
+![Screenshot from 2025-02-04 19-22-48](https://github.com/user-attachments/assets/0278449d-c30a-4878-a1a8-aaf6d49868c2)
+۳. با افزودن یک آیتم جدید رنگ سطر به رنگ اولویت در می‌اید و قابلیت تکمیل و حذف‌شدن دارند (اگر تسک تکمیل شود به انتهای لیست می‌رود). تعداد تکمیل به کل نشان‌ داده می‌شود و اگر تمامی کارها انجام شده باشد آیکون نمایش داده می‌شود:
+
+![Screenshot from 2025-02-04 19-23-17](https://github.com/user-attachments/assets/e86831a6-9a48-432b-ac20-074e3ecc627d)
+![Screenshot from 2025-02-04 19-23-25](https://github.com/user-attachments/assets/f793859f-f1d0-4a9d-a1b4-3a83898f05c9)
+پس از رفرش صفحه مقادیر همچنان باقی می‌مانند.
 # To-Do List Challenge
 
 ## هدف
