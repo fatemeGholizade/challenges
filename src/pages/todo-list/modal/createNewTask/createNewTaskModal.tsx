@@ -12,29 +12,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { todoSchema } from "@/validations/todoListSchema";
 import { useTodoStore } from "@/store/toDoListStore";
 import { prioritiesList } from "@/config/variables/prioritiesList";
+import { enqueueSnackbar } from "notistack";
 
 interface IAddNewTaskProps {
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
 interface IFormInputs {
   title: string;
   priority: string;
-}
+};
 
-export const CreateNewTaskModal: React.FC<IAddNewTaskProps> = ({
-  isOpen,
-  onClose,
-}) => {
+export const CreateNewTaskModal: React.FC<IAddNewTaskProps> = ({ isOpen, onClose}) => {
   const { addListItem } = useTodoStore();
-
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<IFormInputs>({
+  const { handleSubmit, control, reset, formState: { errors }} = useForm<IFormInputs>({
     resolver: yupResolver(todoSchema),
     defaultValues: { title: "", priority: "" },
   });
@@ -42,6 +34,7 @@ export const CreateNewTaskModal: React.FC<IAddNewTaskProps> = ({
   const onSubmit = (data: IFormInputs) => {
     if (!data.priority) return;
     addListItem(data.title, data.priority);
+    enqueueSnackbar("عملیات با موفقیت انجام شد.", { variant: "success" });
     handleClose();
   };
 
@@ -124,7 +117,6 @@ export const CreateNewTaskModal: React.FC<IAddNewTaskProps> = ({
               {errors?.priority?.message}
             </Typography>
           )}
-
           <ContainedButton type="submit" text="افزودن" />
         </form>
       </DialogContent>

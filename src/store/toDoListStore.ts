@@ -1,41 +1,41 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";  
-  interface ITodo {
+  export interface ITodo {
     id: number;
     title: string;
     priority: string;
     completed: boolean;
-  }
+  };
   
   interface ITodoStore {
-    todos: ITodo[];
+    tasks: ITodo[];
     addListItem: (title: string, priority: string) => void;
     deleteListItem: (id: number) => void;
     toggleCompleteStatus: (id: number) => void;
-  }
+  };
   
   export const useTodoStore = create<ITodoStore>()(
     persist(
       (set) => ({
-        todos: [],
+        tasks: [],
         addListItem: (title, priority) =>
           set((state) => ({
-            todos: [
+            tasks: [
               { id: Date.now(), title, priority, completed: false },
-              ...state.todos,
+              ...state.tasks,
             ],
           })),
         deleteListItem: (id) =>
           set((state) => ({
-            todos: state.todos.filter((todo) => todo.id !== id),
+            tasks: state.tasks.filter((todo) => todo.id !== id),
           })),
         toggleCompleteStatus: (id) =>
           set((state) => {
-            const todos = state.todos.map((todo) =>
+            const tasks = state.tasks.map((todo) =>
               todo.id === id ? { ...todo, completed: !todo.completed } : todo
             );
             return {
-              todos: [...todos.filter((t) => !t.completed), ...todos.filter((t) => t.completed)],
+              tasks: [...tasks.filter((t) => !t.completed), ...tasks.filter((t) => t.completed)],
             };
           }),
       }),

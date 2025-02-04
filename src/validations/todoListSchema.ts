@@ -1,4 +1,6 @@
 import * as yup from "yup";
+
+// all persian letters are ok, also symbols that mey be needed are correct
 const persianRegex = /^[\u0600-\u06FF\s!@#$%^&*()_+=\-{}[\]:;"'<>,.?/\\]*$/;
 export const todoSchema = yup.object().shape({
   title: yup
@@ -6,5 +8,4 @@ export const todoSchema = yup.object().shape({
     .matches(persianRegex, "عنوان باید فارسی باشد.")
     .required("عنوان ضروری است."),
   priority: yup.string().required("لطفاً یک اولویت را انتخاب کنید."),
-
 });
