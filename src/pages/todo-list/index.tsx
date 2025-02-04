@@ -1,44 +1,71 @@
-import { ITodo, useTodoStore } from "@/store/toDoListStore";
-import { Container, Paper, Typography, List, ListItem, ListItemText, IconButton, Checkbox, Box, Tooltip } from "@mui/material";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import { useState } from "react";
-import { CreateNewTaskModal } from "@/pages/todo-list/modal/createNewTask/createNewTaskModal";
-import palette from "@/theme/palette";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import {
+  Box,
+  Checkbox,
+  Container,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { enqueueSnackbar } from "notistack";
-const TodoPage: React.FC = () => {
+import { useState } from "react";
 
+import { CreateNewTaskModal } from "@/pages/todo-list/modal/createNewTask/createNewTaskModal";
+import { ITodo, useTodoStore } from "@/store/toDoListStore";
+import palette from "@/theme/palette";
+const TodoPage: React.FC = () => {
   const { tasks, deleteListItem, toggleCompleteStatus } = useTodoStore();
   const [openCreateTaskModal, setOpenCreateTaskModal] = useState<boolean>(false);
 
-  // this is for calculating the ratio of done tasks to all 
+  // this is for calculating the ratio of done tasks to all
   const completedTasks = tasks.filter((todo) => todo.completed).length;
   const ratioText = tasks.length > 0 ? `${tasks.length} / ${completedTasks} ` : "";
 
-  const handleDeleteTask = (task:ITodo) => {
+  const handleDeleteTask = (task: ITodo) => {
     deleteListItem(task.id);
     enqueueSnackbar("عملیات با موفقیت انجام شد.", { variant: "success" });
   };
 
-  const handleToggleTaskStatue = (task:ITodo) => {
+  const handleToggleTaskStatue = (task: ITodo) => {
     toggleCompleteStatus(task.id);
     enqueueSnackbar("عملیات با موفقیت انجام شد.", { variant: "success" });
   };
   return (
-    <Container >
+    <Container>
       <Paper>
-        <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", alignItems: "center", width: "100%", padding: "10px" }}>
-          <Box sx={{display:"flex", alignItems:"center"}}>
-          <Typography fontWeight="bold" variant="h5" align="center" color="#747474">
-            لیست کارهای من
-          </Typography>
-          {tasks.length === 0 ? "" : tasks.length  > 0 && completedTasks < tasks.length ?
-          <Typography component="span" variant="h6" sx={{ marginLeft: "8px", color: "#4CAF50" }}>
-              ({ratioText})
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            padding: "10px",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Typography fontWeight="bold" variant="h5" align="center" color="#747474">
+              لیست کارهای من
             </Typography>
-            :
-           <WorkspacePremiumIcon className="shimmer" color="warning"/> }
+            {tasks.length === 0 ? (
+              ""
+            ) : tasks.length > 0 && completedTasks < tasks.length ? (
+              <Typography
+                component="span"
+                variant="h6"
+                sx={{ marginLeft: "8px", color: "#4CAF50" }}
+              >
+                ({ratioText})
+              </Typography>
+            ) : (
+              <WorkspacePremiumIcon className="shimmer" color="warning" />
+            )}
           </Box>
 
           <Tooltip title="افزودن" arrow>
@@ -49,7 +76,7 @@ const TodoPage: React.FC = () => {
         </Box>
 
         {tasks.length > 0 ? (
-          <List sx={{maxHeight:"350px", overflowY:"scroll", padding:"10px"}}>
+          <List sx={{ maxHeight: "350px", overflowY: "scroll", padding: "10px" }}>
             {tasks.map((task) => (
               <ListItem
                 key={task.id}
@@ -63,31 +90,37 @@ const TodoPage: React.FC = () => {
                 <ListItemText
                   primary={task.title}
                   sx={{
-                      textDecoration: task.completed ? "line-through" : "none",
-                      color: task.completed ? "#6B7280" : palette.natural?.dark,
+                    textDecoration: task.completed ? "line-through" : "none",
+                    color: task.completed ? "#6B7280" : palette.natural?.dark,
                   }}
                 />
                 <Box>
                   <IconButton edge="end" color="error" onClick={() => handleDeleteTask(task)}>
                     <Tooltip title="حذف">
-                    <DeleteOutlineIcon />
+                      <DeleteOutlineIcon />
                     </Tooltip>
                   </IconButton>
                   <Tooltip title="انجام ‌داده‌شده">
-
-                  <Checkbox checked={task.completed} onChange={() =>  handleToggleTaskStatue(task)} color="success" />
-                    </Tooltip>
+                    <Checkbox
+                      checked={task.completed}
+                      onChange={() => handleToggleTaskStatue(task)}
+                      color="success"
+                    />
+                  </Tooltip>
                 </Box>
               </ListItem>
             ))}
           </List>
         ) : (
           <Typography color="error" align="center">
-           وظیفه‌ای وجود ندارد.
+            وظیفه‌ای وجود ندارد.
           </Typography>
         )}
       </Paper>
-      <CreateNewTaskModal isOpen={openCreateTaskModal} onClose={() => setOpenCreateTaskModal(false)} />
+      <CreateNewTaskModal
+        isOpen={openCreateTaskModal}
+        onClose={() => setOpenCreateTaskModal(false)}
+      />
     </Container>
   );
 };

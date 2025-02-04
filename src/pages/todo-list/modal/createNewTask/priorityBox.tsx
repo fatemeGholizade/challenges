@@ -1,10 +1,11 @@
-import { prioritiesList } from "@/config/variables/prioritiesList";
 import { Box } from "@mui/material";
+
+import { prioritiesList } from "@/config/variables/prioritiesList";
 
 interface IPriorityBoxProps {
   value: string;
   onChange: (priority: string) => void;
-};
+}
 // this component renders rectangle of priorities colors
 const PriorityBox: React.FC<IPriorityBoxProps> = ({ value, onChange }) => {
   return (

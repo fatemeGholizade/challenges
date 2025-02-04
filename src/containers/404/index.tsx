@@ -5,7 +5,7 @@ export const NotFoundContainer = () => {
     <>
       <PageLayout>
         <div className="mt-48 flex  w-full justify-center">
-          <span className="text-3xl font-semibold text-warning-main">page not found | 404</span>
+          <span className="text-warning-main text-3xl font-semibold">page not found | 404</span>
         </div>
       </PageLayout>
     </>

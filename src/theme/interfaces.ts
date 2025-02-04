@@ -4,6 +4,6 @@ import { ColorPartial } from "@mui/material/styles/createPalette";
 export interface IPalette extends PaletteOptions {
   primary?: SimplePaletteColorOptions & ColorPartial;
   secondary?: SimplePaletteColorOptions;
-  natural?:SimplePaletteColorOptions;
-  purple?:SimplePaletteColorOptions;
+  natural?: SimplePaletteColorOptions;
+  purple?: SimplePaletteColorOptions;
 }
