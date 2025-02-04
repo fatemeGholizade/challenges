@@ -25,7 +25,7 @@ const TodoPage: React.FC = () => {
               ({ratioText})
             </Typography>
             :
-           <WorkspacePremiumIcon color="warning"/> }
+           <WorkspacePremiumIcon className="shimmer" color="warning"/> }
           </Box>
 
           <Tooltip title="افزودن" arrow>
