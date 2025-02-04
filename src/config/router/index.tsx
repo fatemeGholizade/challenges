@@ -1,4 +1,4 @@
-import { TodoListContainer} from "@/containers";
+import { TodoListContainer } from "@/containers";
 import PageLayout from "@/layouts/PageLayout.tsx";
 
 const routerList = [
@@ -10,7 +10,7 @@ const routerList = [
       </PageLayout>
     ),
     isPrivate: true,
-  }
+  },
 ];
 
 export default routerList;

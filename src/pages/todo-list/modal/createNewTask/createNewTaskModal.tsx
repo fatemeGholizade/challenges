@@ -1,32 +1,31 @@
-import {
-  Dialog,
-  DialogContent,
-  TextField,
-  Tooltip,
-  Box,
-  Typography,
-} from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
-import ContainedButton from "@/components/buttons/ContainedButton";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { todoSchema } from "@/validations/todoListSchema";
-import { useTodoStore } from "@/store/toDoListStore";
-import { prioritiesList } from "@/config/variables/prioritiesList";
+import { Box, Dialog, DialogContent, TextField, Tooltip, Typography } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
+import { Controller, useForm } from "react-hook-form";
+
+import ContainedButton from "@/components/buttons/ContainedButton";
+import { prioritiesList } from "@/config/variables/prioritiesList";
+import { useTodoStore } from "@/store/toDoListStore";
+import { todoSchema } from "@/validations/todoListSchema";
 
 interface IAddNewTaskProps {
   isOpen: boolean;
   onClose: () => void;
-};
+}
 
 interface IFormInputs {
   title: string;
   priority: string;
-};
+}
 
-export const CreateNewTaskModal: React.FC<IAddNewTaskProps> = ({ isOpen, onClose}) => {
+export const CreateNewTaskModal: React.FC<IAddNewTaskProps> = ({ isOpen, onClose }) => {
   const { addListItem } = useTodoStore();
-  const { handleSubmit, control, reset, formState: { errors }} = useForm<IFormInputs>({
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<IFormInputs>({
     resolver: yupResolver(todoSchema),
     defaultValues: { title: "", priority: "" },
   });

@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+
 import { IPalette } from "./interfaces";
 import palette from "./palette";
 import typography from "./typography";
@@ -47,7 +48,6 @@ const theme = createTheme({
         root: {
           marginLeft: 0,
           textAlign: "center",
-
         },
       },
     },
@@ -59,7 +59,6 @@ const theme = createTheme({
         input: {
           fontSize: "0.95rem",
           padding: "10px",
-          
         },
         notchedOutline: {
           border: `1px solid ${palette.purple?.light} !important`,
@@ -72,7 +71,6 @@ const theme = createTheme({
           transform: "translate(14px, 11px) scale(1)",
           fontSize: "0.85rem !important",
           color: `${palette.purple?.light} !important`,
-
         },
         shrink: {
           transform: "translate(10px, -9px) scale(0.82)",

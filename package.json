@@ -12,7 +12,7 @@
     "prettier:format": "yarn prettier . --write",
     "eslint:lint": "eslint .",
     "eslint:fix": "eslint . --fix"
-   },
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
