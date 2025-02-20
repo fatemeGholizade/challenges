@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
-import { useState } from "react";
+import {useState } from "react";
 
 import { CreateNewTaskModal } from "@/pages/todo-list/modal/createNewTask/createNewTaskModal";
 import { ITodo, useTodoStore } from "@/store/toDoListStore";
@@ -36,6 +36,7 @@ const TodoPage: React.FC = () => {
     toggleCompleteStatus(task.id);
     enqueueSnackbar("عملیات با موفقیت انجام شد.", { variant: "success" });
   };
+  
   return (
     <Container>
       <Paper>
